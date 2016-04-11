@@ -22,11 +22,11 @@ XILINX_SDK_OPTIONS=
 BOOTGEN=bootgen
 BOOTGEN_OPTIONS=
 
-all: $(SETTING_FILE) build export_hardware build_fsbl make_bif gen_bootimage upload_bootbin
+all: u-boot.elf $(SETTING_FILE) build export_hardware build_fsbl make_bif gen_bootimage upload_bootbin
 
 u-boot.elf:
 	@echo
-	@echo ********** Create u-boot.elf **********
+	@echo "********** Create u-boot.elf **********"
 	mkdir -p work
 	cd work; git clone https://github.com/Xilinx/u-boot-xlnx.git
 	cd work/u-boot-xlnx/; git checkout -b xilinx-v2015.4 xilinx-v2015.4
@@ -37,7 +37,7 @@ u-boot.elf:
 
 $(SETTING_FILE):
 	@echo
-	@echo ********** Generate settings.tcl **********
+	@echo "********** Generate settings.tcl **********"
 	@mkdir -p $(WORKSPACE_SDK)/fsbl
 	@echo "set project_directory "\"$(PROJECT_DIRECTORY)\" > settings.tcl.tmp
 	@echo "set project_name "\"$(PROJECT_NAME)\" >> settings.tcl.tmp
@@ -48,17 +48,17 @@ $(SETTING_FILE):
 
 .PHONY: build
 build:
-	@echo ********** BUILD **********
+	@echo "********** BUILD **********"
 	cd builder; $(VIVADO) $(VIVADO_OPTIONS) -mode batch -source build.tcl
 
 .PHONY: export_hardware
 export_hardware:
-	@echo ********** EXPORT HARDWARE **********
+	@echo "********** EXPORT HARDWARE **********"
 	cd builder; $(VIVADO) $(VIVADO_OPTIONS) -mode batch -source hw_export.tcl
 
 .PHONY: build_fsbl
 build_fsbl:
-	@echo ********** BUILD FSBL **********
+	@echo "********** BUILD FSBL **********"
 	cd builder; $(XILINX_SDK) $(XILINX_SDL_OPTIONS) -batch -source build_fsbl.tcl
 
 .PHONY: make_bif
@@ -73,7 +73,7 @@ make_bif:
 
 .PHONY: gen_bootimage
 gen_bootimage:
-	@echo ********** GENERATE BOOTIMAGE **********
+	@echo "********** GENERATE BOOTIMAGE **********"
 	mkdir -p $(BOOTIMAGE_DIR)
 	$(BOOTGEN) $(BOOTGEN_OPTIONS) -image $(BIF_FILE) -o $(BOOT_BIN) -w on 
 
