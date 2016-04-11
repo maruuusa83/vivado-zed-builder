@@ -1,4 +1,4 @@
-set design_constraint_file "../constrs/sysdev.xdc"
+set design_constraint_file "../constrs/pin_assign.xdc"
 set design_bd_tcl_file     "../bd/zed_block_design.tcl"
 
 # Add constraint files

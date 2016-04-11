@@ -86,5 +86,5 @@ clean:
 	rm -rf work/
 	rm -rf $(PROJECT_NAME).*
 	rm -rf *.log *.jou
-	rm $(BIF_FILE) $(SETTING_FILE)
-	rm u-boot.elf
+	rm -f $(BIF_FILE) $(SETTING_FILE)
+	rm -f u-boot.elf
