@@ -24,14 +24,27 @@ BOOTGEN_OPTIONS=
 
 all: $(SETTING_FILE) build export_hardware build_fsbl make_bif gen_bootimage upload_bootbin
 
+u-boot.elf:
+	@echo
+	@echo ********** Create u-boot.elf **********
+	mkdir -p work
+	cd work; git clone https://github.com/Xilinx/u-boot-xlnx.git
+	cd work/u-boot-xlnx/; git checkout -b xilinx-v2015.4 xilinx-v2015.4
+	cd work/u-boot-xlnx/; patch -p0 < ../../sdboot.patch
+	make -C work/u-boot-xlnx/ zynq_zed_config CROSS_COMPILE=arm-xilinx-linux-gnueabi- ARCH=arm
+	make -C work/u-boot-xlnx/ CROSS_COMPILE=arm-xilinx-linux-gnueabi- ARCH=arm
+	cp work/u-boot-xlnx/u-boot ./u-boot.elf
+
 $(SETTING_FILE):
-	mkdir -p $(WORKSPACE_SDK)/fsbl
+	@echo
+	@echo ********** Generate settings.tcl **********
+	@mkdir -p $(WORKSPACE_SDK)/fsbl
 	@echo "set project_directory "\"$(PROJECT_DIRECTORY)\" > settings.tcl.tmp
 	@echo "set project_name "\"$(PROJECT_NAME)\" >> settings.tcl.tmp
 	@echo "set device_parts "\"$(DEVICE_PARTS)\" >> settings.tcl.tmp
 	@echo "set hw_name "\"$(HW_NAME)\" >> settings.tcl.tmp
 	@echo "set hwspec_file "\"$(HWSPEC_FILE)\" >> settings.tcl.tmp
-	mv settings.tcl.tmp $(SETTING_FILE)
+	@mv settings.tcl.tmp $(SETTING_FILE)
 
 .PHONY: build
 build:
@@ -70,6 +83,8 @@ upload_bootbin:
 
 .PHONY: clean
 clean:
+	rm -rf work/
 	rm -rf $(PROJECT_NAME).*
 	rm -rf *.log *.jou
 	rm $(BIF_FILE) $(SETTING_FILE)
+	rm u-boot.elf
