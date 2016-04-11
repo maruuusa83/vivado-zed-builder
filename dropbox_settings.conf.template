@@ -1,0 +1,6 @@
+[dropbox]
+token: abcdefgh-XXXXXXXXXX498Juk4VjfeuS87RkkeuDBe6kkf7oOOOhfAvbD83455he
+position: /project_name/bootbin/
+
+[hardware]
+bootbin: build_space_project.sdk/fsbl/bootimage/BOOT.bin
