@@ -49,17 +49,17 @@ $(SETTING_FILE):
 .PHONY: build
 build:
 	@echo "********** BUILD **********"
-	cd builder; $(VIVADO) $(VIVADO_OPTIONS) -mode batch -source build.tcl
+	$(VIVADO) $(VIVADO_OPTIONS) -mode batch -source ./builder/build.tcl
 
 .PHONY: export_hardware
 export_hardware:
 	@echo "********** EXPORT HARDWARE **********"
-	cd builder; $(VIVADO) $(VIVADO_OPTIONS) -mode batch -source hw_export.tcl
+	$(VIVADO) $(VIVADO_OPTIONS) -mode batch -source ./builder/hw_export.tcl
 
 .PHONY: build_fsbl
 build_fsbl:
 	@echo "********** BUILD FSBL **********"
-	cd builder; $(XILINX_SDK) $(XILINX_SDL_OPTIONS) -batch -source build_fsbl.tcl
+	$(XILINX_SDK) $(XILINX_SDL_OPTIONS) -batch -source ./builder/build_fsbl.tcl
 
 .PHONY: make_bif
 make_bif:
