@@ -65,6 +65,7 @@ proc add_verilog_file {fileset_name library_name file_name} {
     set_property "library"   $library_name $file_obj
 }
 
+source "blok_design_generator.tcl"
 source "constraints.tcl"
 source "sources.tcl"
 
