@@ -65,7 +65,8 @@ proc add_verilog_file {fileset_name library_name file_name} {
     set_property "library"   $library_name $file_obj
 }
 
-source "constraints.tcl"
-source "sources.tcl"
+source "builder/block_design_generator.tcl"
+source "builder/constraints.tcl"
+source "builder/sources.tcl"
 
 close_project

@@ -1,6 +1,3 @@
-set design_constraint_file "../constrs/pin_assign.xdc"
-set design_bd_tcl_file     "../bd/zed_block_design.tcl"
-
 # Add constraint files
 add_files -fileset constrs_1 -norecurse $design_constraint_file
 

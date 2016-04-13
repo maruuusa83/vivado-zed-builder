@@ -1,5 +1,5 @@
-source "settings.tcl"
-source "project_generator.tcl"
+source "builder/settings.tcl"
+source "builder/project_generator.tcl"
 
 open_project [file join $project_directory $project_name]
 

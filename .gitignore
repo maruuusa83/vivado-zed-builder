@@ -1,5 +1,9 @@
 *.jou
 *.log
+*.xpr
+.Xil/
+
+build_space_project.*/
 
 work/
 u-boot.elf

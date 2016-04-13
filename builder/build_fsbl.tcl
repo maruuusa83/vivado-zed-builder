@@ -1,4 +1,4 @@
-source "settings.tcl"
+source "builder/settings.tcl"
 
 set app_name            "fsbl"
 set app_type            {Zynq FSBL}
