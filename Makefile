@@ -46,7 +46,7 @@ $(SETTING_FILE):
 	@echo "set device_parts "\"$(DEVICE_PARTS)\" >> settings.tcl.tmp
 	@echo "set hw_name "\"$(HW_NAME)\" >> settings.tcl.tmp
 	@echo "set hwspec_file "\"$(HWSPEC_FILE)\" >> settings.tcl.tmp
-	@echo "set design_constraint_file "\"../$(CONSTRAINT_FILE)\" >> settings.tcl.tmp
+	@echo "set design_constraint_file "\"$(CONSTRAINT_FILE)\" >> settings.tcl.tmp
 	@mv settings.tcl.tmp $(SETTING_FILE)
 
 .PHONY: build

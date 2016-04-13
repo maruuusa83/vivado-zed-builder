@@ -1,4 +1,4 @@
-source "settings.tcl"
+source "builder/settings.tcl"
 
 open_project [file join $project_directory $project_name]
 
@@ -11,7 +11,7 @@ if { [file exists $sdk_workspace] == 0 } {
 ### export hardware ###
 set design_top_name [get_property "top" [current_fileset]]
 file copy -force [file join $project_directory $project_name.runs "impl_1" $design_top_name.sysdef] \
-                 [file join $sdk_workspace $design_top_name.hdf]
+                 [file join $sdk_workspace $hwspec_file]
 
 close_project
 
