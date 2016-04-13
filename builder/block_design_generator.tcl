@@ -1,8 +1,10 @@
+source "builder/settings.tcl"
+
 ########################################
 ### Create Base System for ZedBoaard ###
 ########################################
 # Prepare Block Design Struction
-create_bd_design "design_1"
+create_bd_design $design_name
 set_property  ip_repo_paths  C:/Xilinx/sysdev/zed/ip [current_project]
 update_ip_catalog
 
