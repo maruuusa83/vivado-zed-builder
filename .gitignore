@@ -2,8 +2,11 @@
 *.log
 *.xpr
 .Xil/
+builder/settings.tcl
 
 build_space_project.*/
 
 work/
 u-boot.elf
+
+__pycache__/

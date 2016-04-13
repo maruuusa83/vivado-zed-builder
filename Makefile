@@ -6,7 +6,8 @@ HW_NAME=zed_block_design_wrapper_hw_platform_0
 BLOCK_DESIGN_TCL_FILE=bd/zed_block_design.tcl
 CONSTRAINT_FILE=constrs/pin_assign.xdc
 HWSPEC_FILE=zed_block_design_wrapper.hdf
-BIT_FILE=zed_block_design_wrapper.bit
+DESIGN_NAME=design_1
+BIT_FILE=$(DESIGN_NAME)_wrapper.bit
 DEVICE_PARTS=xc7z020clg484-1
 U_BOOT=u-boot.elf
 BOOTIMAGE_DIR=$(WORKSPACE_SDK)/fsbl/bootimage
@@ -47,6 +48,7 @@ $(SETTING_FILE):
 	@echo "set hw_name "\"$(HW_NAME)\" >> settings.tcl.tmp
 	@echo "set hwspec_file "\"$(HWSPEC_FILE)\" >> settings.tcl.tmp
 	@echo "set design_constraint_file "\"$(CONSTRAINT_FILE)\" >> settings.tcl.tmp
+	@echo "set design_name "\"$(DESIGN_NAME)\" >> settings.tcl.tmp
 	@mv settings.tcl.tmp $(SETTING_FILE)
 
 .PHONY: build
