@@ -30,4 +30,14 @@ apply_bd_automation -rule xilinx.com:bd_rule:bram_cntlr -config {BRAM "New Blk_M
 endgroup
 
 regenerate_bd_layout
+assign_bd_address
+
+####################
+### Make Wrapper ###
+####################
+save_bd_design
+set design_bd_name  [get_bd_designs]
+make_wrapper -files [get_files $design_bd_name.bd] -top -import
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
 
