@@ -2,7 +2,7 @@ from marconfparser import MarConfParser
 import io
 import dropbox
 
-SETTINGS_FILE = "../settings.conf"
+SETTINGS_FILE = "../dropbox_settings.conf"
 CONFIG_SETTINGS = {
     'dropbox': [
         {'name':'token', 'type': str, 'required': True},
