@@ -4,6 +4,9 @@
 .Xil/
 builder/settings.tcl
 
+ips/
+bd/
+
 build_space_project.*/
 
 work/

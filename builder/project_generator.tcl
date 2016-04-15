@@ -1,4 +1,4 @@
-###################################
+##################################
 ### Build Space Project Builder ###
 ###################################
 
@@ -10,12 +10,6 @@ set board_part [get_board_parts -quiet -latest_file_version "*zed*"]
 if {[string equal $board_part ""] == 1} {
     puts "ERROR : No target board"
     return 1
-}
-
-lappend ip_repo_path_list [file join $project_directory "ips"]
-if {[info exists ip_repo_path_list] && [llength $ip_repo_path_list] > 0 } {
-    set_property ip_repo_paths $ip_repo_path_list [current_fileset]
-    update_ip_catalog
 }
 
 set_property "board_part"         $board_part      [current_project]
