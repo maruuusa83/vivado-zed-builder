@@ -40,6 +40,11 @@ set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {1} CONFIG.PCW_S_AXI_HP0_DATA_
 endgroup
 
 # Add PyCoRAM IP
+lappend ip_repo_path_list [file join $project_directory "ips/"]
+puts "INFO: Set IP repositories paths"
+set_property ip_repo_paths $ip_repo_path_list [current_fileset]
+update_ip_catalog -rebuild
+
 startgroup
 create_bd_cell -type ip -vlnv PyCoRAM:user:pycoram_userlogic:1.0 pycoram_userlogic_0
 endgroup
